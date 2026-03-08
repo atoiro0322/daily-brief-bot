@@ -1,0 +1,10 @@
+# ai-daily-digest - 必要なライブラリ
+# インストール方法: pip install -r requirements.txt
+
+google-generativeai   # Gemini API クライアント
+requests              # HTTPリクエスト（arXiv API取得）
+feedparser            # RSSフィード解析
+schedule              # ローカル実行時のスケジューラー
+python-dotenv         # .envファイルの読み込み
+pyyaml                # YAML設定ファイルの読み込み
+newsapi-python        # NewsAPI クライアント（オプション）

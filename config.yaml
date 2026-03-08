@@ -1,0 +1,99 @@
+# AI Daily Digest - 設定ファイル
+# =====================================================================
+
+# 基本設定
+settings:
+  news_fetch_per_feed: 5    # 各フィードから取得する件数
+  news_top_n: 5             # メールに掲載するTOP件数
+  paper_top_n: 5            # 論文のTOP件数
+  send_time: "07:00"        # 送信時刻
+  gemini_model: "gemini-2.5-flash-lite"
+
+# =====================================================================
+# NewsAPI設定（オプション）
+# =====================================================================
+newsapi:
+  enabled: false              # NewsAPIを使用する場合はtrue
+  api_key_env: "NEWSAPI_KEY"  # 環境変数名（.envに設定）
+  max_results: 20             # 1回の検索で取得する最大件数
+
+  # 検索キーワード（英語のみ対応）
+  keywords:
+    - "artificial intelligence"
+    - "machine learning"
+    - "technology"
+
+  # 検索対象ソース（NewsAPIで利用可能なソースID）
+  sources:
+    - "techcrunch"
+    - "wired"
+
+  language: "en"
+  sort_by: "publishedAt"
+
+# =====================================================================
+# キーワード設定
+# =====================================================================
+keywords:
+  # arXiv論文検索用キーワード
+  arxiv:
+    - "artificial intelligence"
+    - "machine learning"
+    - "neural network"
+    - "deep learning"
+
+  # Google News検索用キーワード（英語）
+  google_news_en:
+    - "artificial intelligence"
+    - "machine learning"
+    - "technology"
+
+  # Google News検索用キーワード（日本語）
+  google_news_jp:
+    - "AI"
+    - "人工知能"
+    - "機械学習"
+
+# =====================================================================
+# arXiv設定
+# =====================================================================
+arxiv:
+  categories:
+    - "cs.AI"
+    - "cs.LG"
+    - "cs.CV"
+  max_results: 15
+
+# =====================================================================
+# ニュースフィード設定
+# =====================================================================
+feeds:
+  # 🌏 英語ニュース
+  english:
+    - name: "TechCrunch"
+      url: "https://techcrunch.com/feed/"
+      enabled: true
+
+    - name: "MIT Technology Review"
+      url: "https://www.technologyreview.com/feed/"
+      enabled: true
+
+    # Google News検索（動的生成）
+    - name: "Google News EN"
+      type: "google_news"
+      language: "en"
+      use_keywords: "google_news_en"
+      enabled: true
+
+  # 🇯🇵 日本語ニュース
+  japanese:
+    - name: "ITmedia"
+      url: "https://rss.itmedia.co.jp/rss/2.0/news_bursts.xml"
+      enabled: true
+
+    # Google News検索（動的生成）
+    - name: "Google News JP"
+      type: "google_news"
+      language: "jp"
+      use_keywords: "google_news_jp"
+      enabled: true
